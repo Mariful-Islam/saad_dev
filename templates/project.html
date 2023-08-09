@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main class="project" id="project">
+  <div class="project__title">
+    <h3>Project</h3>
+  </div>
+  <div class="project__list">
+    {% for project in projects %}
+    <div>
+      <div class="project__image">
+        <a href="{% url 'single-project' project.name %}"><img src="{{ project.image.url }}" alt="" /></a>
+      </div>
+
+      <div class="project__detail">
+
+        <div class="project__name">
+          <a href="{% url 'single-project' project.name %}">
+            <p>{{ project.name }}</p>
+          </a>
+          <hr>
+        </div>
+        <div class="project__description">
+          <p>{{ project.description|slice:"0:100" }}</p>
+        </div>
+        <div class="project__stack">
+          <ul>
+            <li>{{ project.stack }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</main>
+
+{% endblock content %}

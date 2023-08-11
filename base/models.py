@@ -24,6 +24,35 @@ class Project(models.Model):
     def __str__(self):
         return self.name
 
+    def get_stack_list(self):
+        stacks = self.stack.split(',')
+        return stacks
+
+
+class ProjectStatstics(models.Model):
+
+    ONGOING_STATUS = 1
+    COMPLETED_STATUS = 2
+    STATUS_CHOICES = (
+        (ONGOING_STATUS, 'Ongoing'),
+        (COMPLETED_STATUS, 'Completed')
+    )
+
+    name = models.CharField(max_length=50)
+    brief = models.CharField(max_length=100)
+    status = models.IntegerField(
+        choices=STATUS_CHOICES, default=ONGOING_STATUS)
+    github = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    def get_status(self):
+        if self.status == 1:
+            return 'Ongoing'
+        elif self.status == 2:
+            return 'Completed'
+
 
 class Client(models.Model):
     name = models.CharField(max_length=100)

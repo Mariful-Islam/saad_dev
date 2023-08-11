@@ -2,28 +2,24 @@
 {% load static %}
 {% block content %}
 
-<!-- Service Section Start -->
 
-<main class="service__main">
-  <div class="service__container">
-    <div class="service__wrapper">
-      <div class="service_list">
-        {% for service in services %}
-        <div class="service__detail">
-          <div class="service__name">
-            <h3>{{ service.name }}</h3>
-          </div>
-          <div class="service__description">
-            <p>{{ service.description }}</p>
-            <img src="{{ service.image.url }}" alt="" style="height: 300px; width: auto; object-fit: cover;">
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
+<!-- Service Start -->
+<main class="service" id="service">
+  <div class="heading">
+    <h3>Services</h3>
+  </div>
+
+  <div class="service__list">
+    <ul class="service__item">
+      {% for service in services %}
+      <a href="{% url 'single-service' service.name %}">
+        <li>{{ service.name }}</li>
+      </a>
+      {% endfor %}
+    </ul>
   </div>
 </main>
 
-<!-- Service Section End -->
+<!-- Service End -->
 
 {% endblock content %}

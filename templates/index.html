@@ -2,30 +2,40 @@
 {% load static %}
 {% block content %}
 
+<!-- First look design start  -->
+<div class="myself">
+  <div class="myself__wrapper">
+    <h1>
+      Hi !! <br>
+      This is Mariful <br></h1>
+    <p>I am a Software Engineer</p>
+    <div class="line">
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 
+ First look design End  -->
+
 
 <!-- Service Start -->
 <main class="service" id="service">
-  <div class="service__header">
+  <div class="heading">
     <h3>Services</h3>
   </div>
 
   <div class="service__list">
     <ul class="service__item">
       {% for service in services %}
-      <a href="{% url 'service' %}">
+      <a href="{% url 'single-service' service.name %}">
         <li>{{ service.name }}</li>
       </a>
       {% endfor %}
     </ul>
   </div>
-
-  <a href="{% url 'service' %}">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" id="arrow-down">
-      <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
-      <path
-        d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
-    </svg>
-  </a>
+  <a id="see-all" href="{% url 'service' %}">See All</a>
 </main>
 
 <!-- Service End -->
@@ -33,7 +43,7 @@
 <!-- Project Start -->
 
 <main class="project" id="project">
-  <div class="project__title">
+  <div class="heading">
     <h3>Project</h3>
   </div>
   <div class="project__list">
@@ -58,7 +68,9 @@
 
         <div class="project__stack">
           <ul>
-            <li>{{ project.stack }}</li>
+            {% for stack in project.get_stack_list %}
+            <li>{{ stack }}</li>
+            {% endfor %}
           </ul>
         </div>
       </div>
@@ -74,7 +86,7 @@
 
 
 <main class="client" id="client">
-  <div class="client__header">
+  <div class="heading">
     <h3>Our Clients</h3>
   </div>
 

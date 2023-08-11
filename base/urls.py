@@ -11,6 +11,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('home/', views.home, name="home"),
     path('service/', views.service, name="service"),
+    path('service/<str:service_name>/',
+         views.single_service, name="single-service"),
     path('project/', views.project, name="project"),
     path('project/<str:project_name>/',
          views.single_project, name="single-project"),

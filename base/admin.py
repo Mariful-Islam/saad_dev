@@ -5,6 +5,7 @@ from .models import *
 
 admin.site.register(Service)
 admin.site.register(Project)
+admin.site.register(ProjectStatstics)
 admin.site.register(Client)
 admin.site.register(Partnership)
 admin.site.register(Myprofile)

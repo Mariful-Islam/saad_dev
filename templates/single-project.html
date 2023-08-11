@@ -17,7 +17,9 @@
         </div>
         <div class="sp__stack">
             <ul>
-                <li>{{ project.stack }}</li>
+                {% for stack in project.get_stack_list %}
+                <li>{{ stack }}</li>
+                {% endfor %}
             </ul>
         </div>
         <div class="sp__requirement">

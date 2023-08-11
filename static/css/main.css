@@ -1,10 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root{
+  --color:#4afffc;
+  --bg-color: #303138;
+}
+
 body {
   margin: 0;
   padding: 0;
   background-color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   position: relative;
 }
+
+.heading h3{
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--color);
+  margin: 0;
+  padding: 2.5rem 0 2rem 0;
+  text-transform: uppercase;
+}
+
+.container {
+  background-color: var(--bg-color);
+  color: var(--color);
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.wrapper {
+  padding: 0 10% 2rem;
+}
+
+
 
 /* Header Start */
 header {
@@ -19,6 +49,7 @@ header {
 }
 
 .logo {
+  color: var(--color);
   margin-left: 10%;
 }
 
@@ -50,42 +81,74 @@ header {
   text-decoration: none;
   color: white;
   padding: 8px 10px;
-  border-radius: 20px;
   margin-left: 15px;
   text-transform: uppercase;
   font-size: 12px;
+  font-weight: 600;
+  transition: all 0.1s linear;
 }
 
 .nav__list li a:is(:link, :active, :visited).active {
-  background-color: white;
-  color: #494a57;
+  border-bottom: 3px solid var(--color);
+  color: var(--color);
 }
-/* .nav__list li a: {
-  background-color: white;
-  color: #494a57;
-} */
+.nav__list li a:is(:link, :active, :visited):hover {
+  border-bottom: 3px solid var(--color);
+  color:  var(--color);
+}
 
 .nav__list li a.active {
-  background-color: white;
-  color: #494a57;
+  border-bottom: 3px solid var(--color);
+  color: var(--color);
 }
 
 /* Header End */
 
-/* Service Start */
+
+
+/* Myself Start */
+
+.myself {
+  background-color: #303138;
+  color: var(--color);
+  height: 100vh;
+  width: auto;
+  margin: 0;
+  
+  
+}
+
+.myself__wrapper {
+  padding: 10rem 0 0 10rem;
+  font-size: 1.5rem;
+  margin: 0;
+  width: 30%;
+
+}
+
+.myself__wrapper p {
+  font-size: 0.9rem;
+}
+
+.line {
+  height: 2px;
+  width: 100%;
+  background-color: var(--color);
+}
+
+/* Myself End */
+
+
+/* Service section Start */
 .service {
   position: relative;
   background-color: #303138;
   color: white;
   width: 100%;
-  height: 28rem;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.service__header {
-  font-size: 30px;
 }
 
 .service__item {
@@ -113,10 +176,6 @@ header {
   cursor: pointer;
 }
 
-/* .service__item a li {
-  text-decoration: none;
-  
-} */
 
 .service__item a:hover {
   box-shadow: 0.1rem 0.2rem 0.8rem gray;
@@ -137,9 +196,9 @@ header {
   fill: #494a57;
 }
 
-/* Service End */
+/* Service Section End */
 
-/* Project Start */
+/* Project Section Start */
 
 .project {
   background-color: #2f3035;
@@ -155,11 +214,6 @@ header {
   box-sizing: border-box;
   padding-bottom: 5rem;
   
-}
-.project__title {
-  margin-top: 20px;
-  font-size: 2rem;
-  padding: 0;
 }
 
 .project__list {
@@ -239,15 +293,49 @@ header {
   margin-top: 1.5rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
-  border-radius: 12px;
   padding: 5px 10px;
   font-weight: 600;
+  transition: all 0.1s linear;
 }
 
 #see-all:hover {
-  background-color: white;
-  color: gray;
+  color: var(--color);
+  box-shadow: 0 0.1rem 0 0 var(--color);
 }
+
+
+/* Project Statstics Start */
+
+.table {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  width: 100%;
+  text-align: center;
+  height: 50vh;
+  background-color: #000000;
+
+}
+
+.table_header {
+  background-color: #000000;
+  color: var(--color);
+  display: grid;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr;
+  font-weight: 600;
+  text-align: center;
+}
+
+.table_data {
+  background-color: #181616;
+  display: grid;
+  grid-template-columns: 1fr 3fr 3fr 3fr 3fr;
+  overflow-y: scroll;
+  text-align: center;
+
+}
+
+/* Project Statstics End */
 
 
 /* Single Project Section Start */
@@ -350,7 +438,7 @@ header {
 /* Client Start */
 
 .client {
-  background-color: #6d6d72;
+  background-color: var(--bg-color);
   color: white;
   display: flex;
   flex-direction: column;
@@ -362,9 +450,6 @@ header {
   position: relative;
 }
 
-.client__header {
-  font-size: 2rem;
-}
 
 #client__slider {
   display: flex;
@@ -376,7 +461,7 @@ header {
 
 .client__detail {
   padding: 2%;
-  width: 100%;
+  width: 25rem;
   height: auto;
   box-sizing: border-box;
 }
@@ -407,7 +492,7 @@ header {
 #arrow-right {
   height: 30px;
   width: 30px;
-  fill: #ffffff;
+  fill: var(--color);
   cursor: pointer;
 }
 
@@ -424,7 +509,7 @@ header {
 }
 /* Client End */
 
-/* Footer Start */
+/* Footer Section Start */
 
 footer {
   color: white;
@@ -437,7 +522,7 @@ footer {
   width: 100%;
 }
 #copyright {
-  fill: red;
+  fill: white;
   height: 15px;
   width: 15px;
 }
@@ -448,10 +533,19 @@ footer {
   text-align: justify;
 }
 
+.footer__about h3 {
+  color: var(--color);
+}
+
 .footer__contact {
   margin-top: 10vh;
   margin-right: 10%;
 }
+
+.footer__contact h3 {
+  color: var(--color);
+}
+
 
 #fb {
   height: 20px;
@@ -587,40 +681,35 @@ footer {
 
   /* Responsive max-width: 600px header End */
 
-  /* Responsive ---Service Start */
+  /* Responsive ---Service Section Start */
   .service {
-    padding-top: 10rem;
-    height: 43rem;
+    height: auto;
   }
   .service__list {
     width: 100%;
     box-sizing: border-box;
   }
-  .service__header {
-    font-size: 1.5rem;
-    margin-top: 40px;
-  }
   .service__item {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     height: 30rem;
   }
 
-  .service__item li {
+  .service__item a li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 90%;
     height: 100%;
   }
-  /* Responsive ---Service End */
+  /* Responsive ---Service Section End */
 
   /* Responsive Project Start */
 
   .project {
     height: auto;
-  }
-
-  .project__title {
-    font-size: 1.5rem;
   }
 
   .project__list {
@@ -649,9 +738,6 @@ footer {
     height: auto;
   }
 
-  .client__header {
-    font-size: 1.5rem;
-  }
   .client__list {
     grid-template-columns: auto;
     justify-items: center;
@@ -708,46 +794,19 @@ footer {
 .service__main {
   margin: 0;
   padding: 0;
-  background-color: #494a57;
+  background-color: var(--bg-color);
   color: white;
 }
 
 .service__container {
-  padding: 0 0 0 10%;
+  padding: 0 10% 0 10%;
 }
 
 .service__wrapper {
 
 }
 
-/* .service__topic {
-  margin-top: 5rem;
-  background-color: #494a57;
-}
-
-.topic__name {
-  margin-top: 20px;
-  padding: 10px 40px 10px 0px;
-  cursor: pointer;
-  margin-left: -15px;
-  padding-left: 15px;
-  transition: all 0.1s linear;
-}
-
-.topic__name.active {
-  box-shadow: -3px 0px 0px 0px #1aa6d1;
-  background-color: #2a2b30;
-}
-
-.topic__name:hover {
-  box-shadow: -3px 0px 0px 0px #1aa6d1;
-  background-color: #2a2b30;
-} */
-
 .service_list {
-  background-color: #2a2b30;
-  margin-right: 10%;
-  padding: 5rem 5rem 5rem;
   border-radius: 10px;
   
 }
@@ -767,20 +826,33 @@ footer {
   align-items: flex-start;
 }
 
+/* Single Service  */
+
+.ss__name p {
+ font-weight: 600;
+ text-transform: uppercase;
+}
+
+.ss__description {
+  color: white;
+  text-align: justify;
+  
+}
+
 /* ============= Service Page End ================ */
 
 
 /* =================Client Page Start================== */
 
 .partnership {
-  background-color: #ffffff;
+  background-color: white;
   padding: 100px 0;
 }
 
-.partnership__header h2 {
-  color: #000000;
+.partnership__header h3 {
+  color: black;
   font-weight: 600;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   text-align: center;
   margin: 0;
   padding-bottom: 50px;
@@ -808,8 +880,8 @@ footer {
   width: 100px;
   object-fit: cover;
   mix-blend-mode: darken;
-}
 
+}
 
 /* Responsive Partnership Page */
 
@@ -840,8 +912,8 @@ footer {
 .about__container {
   height: auto;
   padding: 5vh 0;
-  background-color: #6d6d72;
-  color: white;
+  background-color: #303138;
+  color: var(--color);
 }
 
 /* Profile Section Start */
@@ -855,17 +927,17 @@ footer {
 }
 
 .profile__wrapper {
-  background-color: #535358;
+  background-color: ;
   border-radius: 12px;
   padding: 10px;
-  border: 1px solid #0bc0e0;
-  box-shadow: 0.1rem 0.1rem 0.4rem #0bc0e0;
+  border: 1px solid var(--color);
+  box-shadow: 0.1rem 0.1rem 0.4rem var(--color);
   transition: all 0.1s linear;
 }
 
 .profile__wrapper:hover {
   transform: scale(1.01);
-  box-shadow: 0.2rem 0.2rem 0.8rem #0bc0e0;
+  box-shadow: 0.2rem 0.2rem 0.8rem var(--color);
 }
 
 .profile {
@@ -879,7 +951,7 @@ footer {
 .my-image {
   height: 100px;
   width: 100px;
-  border: 2px solid #0bc0e0;
+  border: 2px solid var(--color);
   border-radius: 50%;
   object-fit: cover;
 }
@@ -1020,8 +1092,8 @@ footer {
 
 .contact__container {
   margin: 0;
-  padding: 5% 10%;
-  background-color: #424247;
+  padding: 0 10%;
+  background-color: var(--bg-color);
   height: 40rem;
 }
 
@@ -1063,16 +1135,17 @@ footer {
 }
 
 .contact__form form input[type="button"] {
-  background-color: #7db9cc;
+  background-color: var(--bg-color);
+  color: var(--color);
   font-size: 0.8rem;
   font-weight: 800;
   text-transform: uppercase;
+  border: 2px solid var(--color);
   transition: all 0.2s linear;
 }
 
 .contact__form form input[type="button"]:hover {
-  background-color: #1aa6d1;
-  color: aliceblue;
+  box-shadow: 0 0 0 0.1rem  var(--color);
 }
 
 @media screen and (max-width: 600px) {

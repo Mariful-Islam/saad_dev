@@ -2,7 +2,8 @@ import os
 from django.conf import settings
 from django.http import Http404, HttpResponse
 from django.shortcuts import render
-from .models import Service, Project, Client, Partnership, Myprofile, Skill, Experience
+from .models import Service, Project, Client, Partnership, Myprofile, Skill, Experience, ProjectStatstics
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -22,10 +23,18 @@ def service(request):
     return render(request, 'service.html', context)
 
 
+def single_service(request, service_name):
+    service = Service.objects.get(name=service_name)
+
+    context = {'service': service}
+    return render(request, 'single-service.html', context)
+
+
 def project(request):
     projects = Project.objects.all()
+    project_statstics = ProjectStatstics.objects.all()
 
-    context = {'projects': projects}
+    context = {'projects': projects, 'project_statstics': project_statstics}
     return render(request, 'project.html', context)
 
 
@@ -56,8 +65,22 @@ def about(request):
 
 
 def contact(request):
-    context = {}
-    return render(request, 'contact.html', context)
+    if request.method == "POST":
+        username = request.POST["name"]
+        email = request.POST["email"]
+        message = request.POST["message"]
+
+        send_mail(
+            username,
+            message,
+            email,
+            ['mariful.shad.53@gmail.com'],
+        )
+
+        return render(request, 'contact.html')
+
+    else:
+        return render(request, 'contact.html')
 
 
 def download(request, path):

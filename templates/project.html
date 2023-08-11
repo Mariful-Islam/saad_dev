@@ -3,9 +3,31 @@
 {% block content %}
 
 <main class="project" id="project">
-  <div class="project__title">
+  <div class="heading">
     <h3>Project</h3>
   </div>
+
+  <!-- Project Statstics Start -->
+  <div class="table">
+    <div class="table_header">
+      <p>SL No</p>
+      <p>Name</p>
+      <p>Brief</p>
+      <p>Status</p>
+      <p>Github</p>
+    </div>
+    <div class="table_data" style="color: white;">
+      {% for stat in project_statstics %}
+      <p>{{ stat.id }}</p>
+      <p>{{ stat.name }}</p>
+      <p>{{ stat.brief }}</p>
+      <p>{{ stat.get_status }}</p>
+      <p><a href="{{ stat.github }}">View</a></p>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- Project Statstics End -->
+
   <div class="project__list">
     {% for project in projects %}
     <div>
@@ -26,7 +48,9 @@
         </div>
         <div class="project__stack">
           <ul>
-            <li>{{ project.stack }}</li>
+            {% for stack in project.get_stack_list %}
+            <li>{{ stack }}</li>
+            {% endfor %}
           </ul>
         </div>
       </div>
@@ -34,5 +58,7 @@
     {% endfor %}
   </div>
 </main>
+
+
 
 {% endblock content %}

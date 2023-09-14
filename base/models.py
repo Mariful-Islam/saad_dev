@@ -98,3 +98,41 @@ class Experience(models.Model):
 
     def __str__(self):
         return self.company_name
+
+
+class Contact(models.Model):
+    INBOX_STATUS = 1
+    DRAFT_STATUS = 2
+    SENT_STATUS = 3
+    SPAM_STATUS = 4
+
+    STATUS_CHOICES = (
+        (INBOX_STATUS, 'Inbox'),
+        (DRAFT_STATUS, 'Draft'),
+        (SENT_STATUS, 'Sent'),
+        (SPAM_STATUS, 'Spam')
+    )
+
+    username = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    time = models.DateTimeField(auto_now_add=True)
+    category = models.IntegerField(
+        choices=STATUS_CHOICES, default=INBOX_STATUS)
+
+    def __str__(self):
+        return self.username
+
+    def get_category(self):
+        if self.category == 1:
+            return 'Inbox'
+        elif self.category == 2:
+            return 'Draft'
+        elif self.category == 3:
+            return 'Sent'
+        elif self.category == 4:
+            return 'Spam'
+
+    class Meta:
+        ordering = ['-time']

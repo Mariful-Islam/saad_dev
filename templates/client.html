@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}| Client{% endblock title %}
 {% block content %}
 
 
@@ -60,6 +61,57 @@
     </div>
   </section>
 </main>
+
+<script>
+  // Slider for client section start
+
+  let sliderContent = document.querySelectorAll(".client__detail"),
+    arrowLeft = document.querySelector("#arrow-left"),
+    arrowRight = document.querySelector("#arrow-right"),
+    current = 0;
+
+
+  function reset() {
+    for (let i = 0; i < sliderContent.length; i++) {
+      sliderContent[i].style.display = "none";
+    }
+  }
+
+
+  function startSlide() {
+    reset();
+    sliderContent[0].style.display = "block";
+  }
+  startSlide();
+
+
+  function slideLeft() {
+    reset();
+    sliderContent[current - 1].style.display = "block";
+    current--;
+  }
+
+  function slideRight() {
+    reset();
+    sliderContent[current + 1].style.display = "block";
+    current++;
+  }
+
+
+  arrowLeft.addEventListener('click', function () {
+    if (current === 0) {
+      current = sliderContent.length;
+    }
+    slideLeft();
+  });
+
+  arrowRight.addEventListener('click', function () {
+    if (current === sliderContent.length - 1) {
+      current = -1;
+    }
+    slideRight();
+  });
+</script>
 
 
 <!-- Partnership Section End -->

@@ -19,6 +19,11 @@ urlpatterns = [
     path('client/', views.client, name="client"),
     path('about/', views.about, name="about"),
     path('contact/', views.contact, name="contact"),
+    path('mail/', views.mail, name="mail"),
+    path('mail-view/<int:id>/', views.mail_view, name="mail-view"),
+    path('mail-delete/<int:id>/', views.mail_delete, name='mail-delete'),
+    path('mail_compose/', views.mail_compose, name="mail-compose"),
+
     url(r'^download/(?P<path>.*)$', serve,
         {'document_root': settings.MEDIA_ROOT}),
 ]

@@ -84,6 +84,7 @@
                                     <p>{{ c.message|slice:"0:50" }}</p>
                                     <p>{{ c.time|timesince }}</p>
                                 </a>
+                                <span id="mail-type">{{ c.get_category }}</span>
                                 <a href="{% url 'mail-delete' c.id %}">Delete</a>
                             </div>
                             {% endfor %}

@@ -18,7 +18,8 @@
     </div>
     <div class="mail-subject">
         <p>
-        <h4>Subject</h4>{{ contact.subject }}</p> {{ contact.get_category }}
+        <h4>Subject</h4>{{ contact.subject }}</p>
+        <span id="mail-type">{{ contact.get_category }}</span>
     </div>
     <div class="sender-message">
         <h4>Message</h4>

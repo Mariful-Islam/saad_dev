@@ -1,9 +1,10 @@
 import os
 from django.conf import settings
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from .models import Service, Project, Client, Partnership, Myprofile, Skill, Experience, ProjectStatstics, Contact
 from django.core.mail import send_mail
+from django.contrib import messages
 # Create your views here.
 
 from .utils import get_mail
@@ -113,7 +114,7 @@ def mail_view(request, id):
 def mail_delete(request, id):
     mail = Contact.objects.get(id=id)
     mail.delete()
-    return redirect('mail')
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 
 def mail_compose(request):
@@ -122,9 +123,34 @@ def mail_compose(request):
         subject = request.POST['subject']
         message = request.POST['message']
 
-        contact = Contact.objects.create(
-            email=email, subject=subject, message=message, category=3)
-        contact.save()
+        try:
+            username = Contact.objects.get(email=email).username
+        except:
+            username = email.split('@')[0]
+
+        try:
+            contact = Contact.objects.create(
+                username=username,
+                email=email,
+                subject=subject,
+                message=message,
+                category=3)
+
+            contact.save()
+            messages.info(request, 'Email sent to {}'.format(username))
+            return redirect('mail')
+
+        except:
+            contact = Contact.objects.create(
+                username=username,
+                email=email,
+                subject=subject,
+                message=message,
+                category=2)
+            contact.save()
+            messages.info(
+                request, 'Email not sent to {} but saved.'.format(username))
+            return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
     context = get_mail(request)
 
@@ -136,7 +162,7 @@ def download(request, path):
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
             response = HttpResponse(
-                fh.read(), content_type="applicaation/adminupload")
+                fh.read(), content_type="application/adminupload")
             response['content-Disposition'] = 'inline;filename=' + \
                 os.path.basename(file_path)
             return response

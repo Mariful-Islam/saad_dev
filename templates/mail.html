@@ -19,7 +19,7 @@
 
                     </div>
                     <div class="mail-search">
-                        <form action="">
+                        <form action="" method="GET">
                             <input type="text" name="q" placeholder="Search mail">
                         </form>
                     </div>
@@ -71,6 +71,11 @@
                             </div>
 
                         </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        {{message}}
+                        {% endfor %}
+                        {% endif %}
                         <div class="table-head">
                             <h4>Name</h4>
                             <h4>Message</h4>

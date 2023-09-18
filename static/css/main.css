@@ -1262,6 +1262,11 @@ body{
   background-color: #bbfdff;
 }
 
+.mail-category ul a li span{
+  float: right;
+  margin-right: 10px;
+}
+
 .mail-box{
   display: flex;
   flex-direction: column;
@@ -1291,9 +1296,9 @@ body{
 
 .row-data {
   display: grid;
-  grid-template-columns: 6fr 1fr;
+  grid-template-columns: 5fr 0.5fr 0.5fr;
   align-items: center;
-  gap: 20px;
+  gap: 5px;
   margin: 5px 0;
   background-color: #f3f3f3;
   padding: 0 20px;
@@ -1312,7 +1317,7 @@ body{
 .row-data a:nth-child(1){
   
 }
-.row-data a:nth-child(2){
+.row-data a:nth-child(3){
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1322,10 +1327,9 @@ body{
   border-radius: 5px;
   color: red;
   cursor: pointer;
-  margin-left: 40px;
 }
 
-.row-data a:nth-child(2):hover {
+.row-data a:nth-child(3):hover {
   background-color: red;
   color: white;
 }
@@ -1382,12 +1386,6 @@ body{
   color: white;
 }
 
-/* .sender-name input:focus {
-  background-color: #00e1ff;
-  color: white;
-} */
-
-
 .mail-subject h4 {
   margin: 0;
   margin-bottom: 5px;
@@ -1415,8 +1413,6 @@ body{
   border-radius: 10px;
   height: 400px;
 }
-
-
 
 .compose-form  {
   display: flex;
@@ -1461,6 +1457,7 @@ body{
 }
 
 #mail-count{
+  right: 0;
   margin-left: 10px;
   color: #00e1ff;
 }
@@ -1470,13 +1467,15 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px;
-  width: 100px;
+  height: 15px;
+  width: 40px;
+  padding: 2px;
   border: 2px solid #00e1ff;
-  border-radius: 5px;
+  border-radius: 20px;
   background-color: #bbfdff;
-
-
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 /* =====================Email Page End======================== */
